@@ -1,0 +1,38 @@
+.navbar { 
+    background-color: #ffffff;
+    min-height: 5px ;
+    box-shadow: 0 2px 2px -2px rgba(0,0,0,.2);
+}
+
+.navbar-collapse { justify-content: center;}
+
+.nav-link, .btn, .navbar-brand { 
+    margin: 5px;
+    color: #0a0a0a;
+    align-items: center;
+    font-family: 'Podkova', serif;
+    opacity: 0.8
+}
+
+.btn-navbar {
+    background-color: #4C787E;
+    color: #ffffff;
+    border-color: #4C787E;
+}
+
+.btn:hover {
+    background-color: white;
+    color: #0a0a0a;
+}
+
+.logo { 
+    width: 50px;
+    height: 50px;
+}
+
+.nav-link:hover, btn:hover{ color: #0a0a0a;}
+
+.navbar-toggler { border: 1px solid; }
+
+.navbar-toggler:focus { outline: none;}
+

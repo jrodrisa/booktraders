@@ -1,0 +1,59 @@
+body, html { 
+    height: 100%;
+    width: 100%;
+    
+}
+
+#hero{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url(img/pile-of-assorted-novel-books-694740.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+ 
+}
+
+h1 { 
+    font-size: 4rem;
+    font-weight: 600;
+    line-height: 80px;
+}
+
+.hero-text{
+    padding-top: 120px;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    text-align: center;
+    font-family: 'Podkova', serif;
+    color: #ffffff
+}
+
+.btn-hero{
+    background: #ffffff;
+    color: #0a0a0a
+}
+
+.btn-hero:hover{
+    background: #4C787E;
+    color: #ffffff;
+    border-color: #4C787E;
+}
+
+
+@media (max-width: 575.98px) { 
+    h1{ font-size: 40px; line-height: normal;}
+ }
+
+
+@media (min-width: 576px) and (max-width: 767.98px) { ... }
+
+
+@media (min-width: 768px) and (max-width: 991.98px) { ... }
+
+
+@media (min-width: 992px) and (max-width: 1199.98px) { ... }
+
+
+@media (min-width: 1200px) { ... }
