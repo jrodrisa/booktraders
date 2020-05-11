@@ -16,7 +16,7 @@ function validation(){
         name.classList.add("is-invalid");
         document.getElementById("errorName").textContent = "Your name is required";
         error_count++;
-    }else if(isNaN(name.value) === false){
+    }else if(!isNaN(name.value)){
         name.classList.add("is-invalid");
         document.getElementById("errorName").textContent = "Names can not contain numbers";
         error_count++;
@@ -81,3 +81,8 @@ function validatePassword(password){
     let regex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/;
     return regex.test(password) ? true : false;
 }
+
+// Desactiva la classe "is-invalid", per a poder tornar a enviar el formulari
+form.addEventListener('blur', (event) => {
+	if(event.target.value!='') event.target.classList.remove('is-invalid');
+}, true);
