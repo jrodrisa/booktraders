@@ -3,8 +3,6 @@ const form = document.getElementById("myForm");
 function validation(){
     let error_count = 0;
 
-    form.classList.remove("is-invalid");
-
     let email = document.getElementById("email");
     let password = document.getElementById("password");
     let confirmPassword = document.getElementById("confirmPassword");
@@ -16,7 +14,7 @@ function validation(){
     // Determine if values have changed
 
     formElements = [name,lastName,email,password,confirmPassword];
-    formElements.filter(e => e.value).forEach(newElement);
+    formElements.filter(e => e.value).forEach(removeInvalid);
 
     if (!province.options[province.selectedIndex].defaultSelected){
         console.log("Province has changed");
@@ -26,7 +24,7 @@ function validation(){
 
 
     // Determine conditions
-    
+
     if(name.value == ""){
         name.classList.add("is-invalid");
         document.getElementById("errorName").textContent = "Your name is required";
@@ -102,12 +100,10 @@ function validatePassword(password){
     return regex.test(password) ? true : false;
 }
 
-function newElement(element) {
+function removeInvalid(element) {
     if (element.value != element.defaultValue) {
-        console.log(`${element} has changed`);
+        console.log("Change detected");
         element.defaultValue = element.value;
-        if(element.value!=''){
-            element.classList.remove('is-invalid');
-        } 
+        element.classList.remove('is-invalid');
     }    
 }
