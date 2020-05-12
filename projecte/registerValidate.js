@@ -5,13 +5,28 @@ function validation(){
 
     form.classList.remove("is-invalid");
 
+    let email = document.getElementById("email");
+    let password = document.getElementById("password");
+    let confirmPassword = document.getElementById("confirmPassword");
+
     let name = document.forms["myForm"]["name"];
     let lastName = document.forms["myForm"]["lastName"];
-    let email = document.forms["myForm"]["email"];
-    let password = document.forms["myForm"]["password"];
-    let confirmPassword = document.forms["myForm"]["confirmPassword"];
     let province =  document.forms["myForm"]["province"];
 
+    // Determine if values have changed
+
+    formElements = [name,lastName,email,password,confirmPassword];
+    formElements.filter(e => e.value).forEach(newElement);
+
+    if (!province.options[province.selectedIndex].defaultSelected){
+        console.log("Province has changed");
+        province.options[province.selectedIndex].defaultSelected = province.value;
+        province.classList.remove('is-invalid');
+    }
+
+
+    // Determine conditions
+    
     if(name.value == ""){
         name.classList.add("is-invalid");
         document.getElementById("errorName").textContent = "Your name is required";
@@ -21,10 +36,14 @@ function validation(){
         document.getElementById("errorName").textContent = "Names can not contain numbers";
         error_count++;
     }
-
+    
     if(lastName.value == ""){
         lastName.classList.add("is-invalid");
         document.getElementById("errorLastname").textContent = "Your last name is required";
+        error_count++;
+    }else if(!isNaN(lastName.value)){
+        lastName.classList.add("is-invalid");
+        document.getElementById("errorLastname").textContent = "Last names can not contain numbers";
         error_count++;
     }
 
@@ -64,6 +83,7 @@ function validation(){
         document.getElementById("errorProvince").textContent = "Province is required";
         error_count++;
     }
+    
 
     if (error_count > 0) {
         return false;        
@@ -82,7 +102,12 @@ function validatePassword(password){
     return regex.test(password) ? true : false;
 }
 
-// Desactiva la classe "is-invalid", per a poder tornar a enviar el formulari
-form.addEventListener('blur', (event) => {
-	if(event.target.value!='') event.target.classList.remove('is-invalid');
-}, true);
+function newElement(element) {
+    if (element.value != element.defaultValue) {
+        console.log(`${element} has changed`);
+        element.defaultValue = element.value;
+        if(element.value!=''){
+            element.classList.remove('is-invalid');
+        } 
+    }    
+}
